@@ -37,14 +37,13 @@ class ContractPage extends StatelessWidget {
                   itemCount: UserModel.getUserInfo().length,
                   itemBuilder: (context,position){
                     UserModel user = UserModel.getUserInfo()[position]; //list[position]
-
                     return  SwipeTo(
                       onRightSwipe: (){
                       },
                       child: InkWell(
                         onTap: (){
                           //Route another page
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ContractDetailsPage(user.phone!,"your image url")));
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ContractDetailsPage(user.phone!,user.imageUrl!,user.name!)));
                         },
                         onDoubleTap: (){
 
@@ -60,12 +59,14 @@ class ContractPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(30)),
-                                  child: Image.network(user.imageUrl!
-                                    ,width: 50,height: 50,
+                                  child: Hero(
+                                    tag: user.phone!,
+                                    child: Image.network(user.imageUrl!
+                                      ,width: 50,height: 50,
+                                    ),
                                   ),
                                 ),
                               ),
-
 
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

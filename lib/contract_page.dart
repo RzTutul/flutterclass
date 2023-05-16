@@ -1,5 +1,6 @@
 
 import 'package:firstapp/contract_details.dart';
+import 'package:firstapp/model/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_to/swipe_to.dart';
@@ -7,7 +8,10 @@ import 'package:swipe_to/swipe_to.dart';
 class ContractPage extends StatelessWidget {
   ContractPage({Key? key}) : super(key: key);
 
-  List<String> phone =["01924250146","018454654654","89654654654","56465465465","145465654654","123412412432"];
+/*
+  List<String> phone =["01924250146","018454654654","89654654654"];
+  List<String> image =["https://picsum.photos/id/237/200/300","https://picsum.photos/seed/picsum/200/300","https://picsum.photos/200/300?grayscale"];
+*/
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +34,17 @@ class ContractPage extends StatelessWidget {
               ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemCount: phone.length,
+                  itemCount: UserModel.getUserInfo().length,
                   itemBuilder: (context,position){
+                    UserModel user = UserModel.getUserInfo()[position]; //list[position]
+
                     return  SwipeTo(
                       onRightSwipe: (){
-
                       },
-
                       child: InkWell(
                         onTap: (){
                           //Route another page
-                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ContractDetailsPage(phone[position],"your image url")));
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ContractDetailsPage(user.phone!,"your image url")));
                         },
                         onDoubleTap: (){
 
@@ -56,14 +60,26 @@ class ContractPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(30)),
-                                  child: Image.network("https://media.licdn.com/dms/image/C5603AQGNJvU8H1TwhQ/profile-displayphoto-shrink_800_800/0/1614058429065?e=2147483647&v=beta&t=RDt68jE35OfezhX4Bpeb40ZSsspfF_RJPJznpg2L0s8"
+                                  child: Image.network(user.imageUrl!
                                     ,width: 50,height: 50,
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.0),
-                                child: Text(phone[position],style: TextStyle(fontSize: 16,color: Colors.black),),
+
+
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: Text(user.name!,style: TextStyle(fontSize: 16,color: Colors.black),),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: Text(user.phone!,style: TextStyle(fontSize: 16,color: Colors.black),),
+                                  ),
+                                ],
                               )
                             ],
                           ),

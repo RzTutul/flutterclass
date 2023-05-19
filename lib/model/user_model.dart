@@ -1,44 +1,18 @@
 class UserModel
 {
   String? name;
-  String? phone;
-  String? imageUrl;
-
-  UserModel(this.name,this.phone, this.imageUrl); //Positional
-
-
-
-
- static List<UserModel> getUserInfo() //function
-  {
-    List<UserModel> list = [
-      UserModel("Rz Tutul","01924250146","https://picsum.photos/id/237/200/300"),
-      UserModel("Richard","05616565465","https://picsum.photos/seed/picsum/200/300"),
-      UserModel("Rashed","05616565465","https://picsum.photos/200/300?grayscale"),
-    ];
-
-    return list;
-  }
-}
-
-class UserModelOptional
-{
-  String? name;
-  String? phone;
+  String? message;
   String? imageUrl;
   String? moment;
-
-  UserModelOptional({this.name, this.phone, this.imageUrl}); // Optional Parameters
-
+  UserModel(this.name,this.message, this.imageUrl,this.moment); //Positional
 
 
-
- static List<UserModelOptional> getUserInfo() //function
+  static List<UserModel> getUserInfo() //function
   {
-    List<UserModelOptional> list = [
-      UserModelOptional(name: "Rz Tutul",phone: "01924250146"),
-      UserModelOptional(name: "Richard",phone: "05616565465",imageUrl: "https://picsum.photos/seed/picsum/200/300"),
-      UserModelOptional(name: "Rashed"),
+    List<UserModel> list = [
+      UserModel("Rz Tutul","Hello ,how are you","https://media.istockphoto.com/id/1399788030/photo/portrait-of-young-confident-indian-woman-pose-on-background.jpg?b=1&s=170667a&w=0&k=20&c=8D_YP_bxKh8CH_W3n0kKr9bzQjZeYxUv9QgqfXjHNX8=","08:44"),
+      UserModel("Richard Bernard","Dear Sir, i am..","https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?b=1&s=170667a&w=0&k=20&c=ahypUC_KTc95VOsBkzLFZiCQ0VJwewfrSV43BOrLETM=", "10:33"),
+      UserModel("Rich Harris","Good afternoon","https://picsum.photos/200/300?grayscale", "06:33"),
     ];
 
     return list;

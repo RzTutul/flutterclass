@@ -45,10 +45,9 @@ class _CounterPageState extends State<CounterPageGetX> {
         title: const Text("Counter App With Getx"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
           children: [
-            Obx(()=> Text("${controller.counter.value}",style: const TextStyle(fontSize: 30),)),
+            Obx(()=> Center(child: Text("${controller.counter.value}",style: const TextStyle(fontSize: 30),))),
 
             ElevatedButton(onPressed: (){
              // controller.counter.value++;
@@ -56,26 +55,25 @@ class _CounterPageState extends State<CounterPageGetX> {
              controller.imagerUrl.add("https://picsum.photos/200/300?grayscale");
             }, child: const Text("Click me")),
 
-
             Obx(
-                  ()=> SizedBox(
-                    height: 350,
-                    child: ListView.builder(
-                    itemCount: controller.imagerUrl.length,
-                    itemBuilder: (context,index){
-                      String image = controller.imagerUrl[index];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text("Picture ${index+1}"),
-                            Image.network(image,height: 50,width: 50),
+                  ()=> ListView.builder(
+                  shrinkWrap: true,
+                  reverse: true,
+                  itemCount: controller.imagerUrl.length,
+                  itemBuilder: (context,position){
+                    String image = controller.imagerUrl[position];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("Picture ${position+1}"),
+                          Image.network(image,height: 50,width: 50),
 
-                          ],
-                        ),
-                      );
+                        ],
+                      ),
+                    );
               }),
-                  ),
             )
 
           ],

@@ -3,6 +3,8 @@ import 'package:firstapp/state_management/counter_page_with_getx.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'api_call/page/AlbumPage.dart';
+import 'api_call/page/post_page.dart';
 import 'contract_page.dart';
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: CounterPageGetX(),
+      home: PostPage(),
     );
   }
 }

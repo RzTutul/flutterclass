@@ -1,3 +1,4 @@
+import 'package:firstapp/global_helper.dart';
 import 'package:firstapp/state_management/controller/counter_controller.dart';
 import 'package:firstapp/state_management/my_helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +17,8 @@ class _CounterPageState extends State<CounterPageGetX> {
 
   @override
   void initState() {
+   final value = HelperUtils.getCounterValue();
+   print(value);
     super.initState();
   }
   @override
@@ -40,9 +43,18 @@ class _CounterPageState extends State<CounterPageGetX> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        backgroundColor: Colors.orangeAccent,
         title: const Text("Counter App With Getx"),
+          actions:[
+          Obx(
+          ()=> Switch(value: controller.state.value, onChanged: (state){
+              controller.state.value = !controller.state.value;
+             controller.state.value?Get.changeTheme(ThemeData.dark()):Get.changeTheme(ThemeData.light());
+
+      }),
+          )
+      ],
       ),
       body: Center(
         child: ListView(

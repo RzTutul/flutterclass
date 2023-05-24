@@ -46,6 +46,7 @@ class Album implements AlbumRepo
     final response = await http.post(Uri.parse('${APIClient.BASE_URL}/posts'),
     headers: {
       'Content-Type':'application/json; charset=UTF-8'
+
     },
       body: jsonEncode(
         {

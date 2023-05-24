@@ -1,3 +1,4 @@
+import 'package:firstapp/global_helper.dart';
 import 'package:get/get.dart';
 
 import '../model/post_response.dart';
@@ -10,6 +11,8 @@ class AlbumController extends GetxController
 
   getAlbum()async
   {
+    String token = HelperUtils.getJWTToken();
+
     final response =await albumRepo.fetchAlbum();
     print(response.body);
   }
@@ -22,7 +25,10 @@ class AlbumController extends GetxController
 
   createPost()async
   {
+
+
     final createResponse = await albumRepo.createPost("Rechard", "He is good student!");
+    HelperUtils.storeJWT("xyxfdlsakfljdkasjlfkdsa");
   }
 
   updatePost(int postID)async{

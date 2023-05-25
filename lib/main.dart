@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'api_call/page/AlbumPage.dart';
 import 'api_call/page/post_page.dart';
 import 'contract_page.dart';
+import 'image_stoage/user_profile.dart';
 
 void main() async{
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light
       ),
 
-      home: CounterPageGetX(),
+      home: UserProfile(),
     );
   }
 }

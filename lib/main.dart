@@ -1,3 +1,4 @@
+import 'package:firstapp/splash_screen.dart';
 import 'package:firstapp/state_management/counter_page.dart';
 import 'package:firstapp/state_management/counter_page_with_getx.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'api_call/page/AlbumPage.dart';
 import 'api_call/page/post_page.dart';
 import 'contract_page.dart';
+import 'gridview_page.dart';
 import 'image_stoage/user_profile.dart';
 
 void main() async{
@@ -29,8 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         brightness: Brightness.light
       ),
-
-      home: UserProfile(),
+      home: WelcomePage(),
     );
   }
 }
